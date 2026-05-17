@@ -8,7 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/products', function () {
-    return response()
-        ->json(Product::all())
-        ->header('Access-Control-Allow-Origin', '*');
+    return response()->json(Product::all());
 });
