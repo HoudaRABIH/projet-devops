@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json(['status' => 'OK', 'message' => 'API Laravel operationnelle']);
 });
 
 Route::get('/products', function () {

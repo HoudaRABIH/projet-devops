@@ -1,0 +1,109 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.17.0",
+	"@generated": "Sun, 17 May 2026 21:15:32",
+	"created": "2026-05-17T21:15:32.908727958Z",
+	"insights":[
+		{
+			"level": "Low",
+			"reason": "Warning",
+			"site": "",
+			"key": "insight.log.error",
+			"description": "ZAP errors logged - see the zap.log file for details",
+			"statistic": "2"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "",
+			"key": "insight.network.failure",
+			"description": "Percentage of network failures",
+			"statistic": "30"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "http://laravel_backend",
+			"key": "insight.code.2xx",
+			"description": "Percentage of responses with status code 2xx",
+			"statistic": "100"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "http://laravel_backend",
+			"key": "insight.endpoint.ctype.application/json",
+			"description": "Percentage of endpoints with content type application/json",
+			"statistic": "100"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "http://laravel_backend",
+			"key": "insight.endpoint.method.GET",
+			"description": "Percentage of endpoints with method GET",
+			"statistic": "100"
+		},
+		{
+			"level": "Info",
+			"reason": "Informational",
+			"site": "http://laravel_backend",
+			"key": "insight.endpoint.total",
+			"description": "Count of total endpoints",
+			"statistic": "2"
+		}
+	],
+	"site":[ 
+		{
+			"@name": "http://laravel_backend",
+			"@host": "laravel_backend",
+			"@port": "80",
+			"@ssl": "false",
+			"alerts": [ 
+				{
+					"pluginid": "10112",
+					"alertRef": "10112",
+					"alert": "Session Management Response Identified",
+					"name": "Session Management Response Identified",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
+					"instances":[ 
+						{
+							"id": "0",
+							"uri": "http://laravel_backend:80/",
+							"nodeName": "http:\/\/laravel_backend\/",
+							"method": "GET",
+							"param": "laravel-session",
+							"attack": "",
+							"evidence": "laravel-session",
+							"otherinfo": "cookie:laravel-session\ncookie:XSRF-TOKEN"
+						},
+						{
+							"id": "2",
+							"uri": "http://laravel_backend:80/products",
+							"nodeName": "http:\/\/laravel_backend\/products",
+							"method": "GET",
+							"param": "laravel-session",
+							"attack": "",
+							"evidence": "laravel-session",
+							"otherinfo": "cookie:laravel-session\ncookie:XSRF-TOKEN"
+						}
+					],
+					"count": "2",
+					"systemic": false,
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p>cookie:laravel-session</p><p>cookie:XSRF-TOKEN</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id/</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "3"
+				}
+			]
+		}
+	],
+	"sequences":[
+	]
+
+}
