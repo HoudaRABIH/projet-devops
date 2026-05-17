@@ -9,8 +9,16 @@ services:
       - "8000:80"
     volumes:
       - ./backend:/var/www/html
+      - backend_vendor:/var/www/html/vendor
     depends_on:
       - db
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: ecommerce
+      DB_USERNAME: user
+      DB_PASSWORD: password
     networks:
       - app-network
 
@@ -43,6 +51,7 @@ services:
 
 volumes:
   db_data:
+  backend_vendor:
 
 networks:
   app-network:
